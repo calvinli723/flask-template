@@ -3,12 +3,12 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-from app.routes.index import index_blueprint
-from app.routes.login import login_blueprint
+from app.routes.index import index
+from app.routes.auth import auth
 
 app = Flask(__name__)
-app.register_blueprint(index_blueprint, url_prefix="/")
-app.register_blueprint(login_blueprint, url_prefix="/login")
+app.register_blueprint(index, url_prefix="/")
+app.register_blueprint(auth, url_prefix="/auth")
 app.config.from_object(Config)
 
 db = SQLAlchemy(app)
