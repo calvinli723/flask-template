@@ -8,6 +8,7 @@ app = Flask(__name__)
 
 app.config.from_object(Config)
 login = LoginManager(app)
+login.login_view = "auth.login"
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
