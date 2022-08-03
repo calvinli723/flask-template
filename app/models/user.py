@@ -8,7 +8,7 @@ class User(UserMixin, db.Model):
     first_name =  db.Column(db.String(120))
     last_name = db.Column(db.String(120))
     password_hash = db.Column(db.String(128))
-    appointments = db.relationship("Appointment", backref="patient", lazy="dynamic")
+    items = db.relationship("Item", backref="user", lazy="dynamic")
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
