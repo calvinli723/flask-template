@@ -1,4 +1,5 @@
-from app import db, login
+from app import db
+from flask import current_app
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -19,6 +20,6 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return "<User {}>".format(self.email)
 
-@login.user_loader
+@current_app.login.user_loader
 def load_user(id):
     return User.query.get(int(id))
