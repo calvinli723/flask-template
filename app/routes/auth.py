@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, flash, redirect, url_for, request
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 
 from app import db
 from app.forms import LoginForm, RegistrationForm
@@ -26,6 +26,7 @@ def login():
     return render_template("login.html", title="Sign In", form=form)
 
 @auth.route("/logout")
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('index.base'))
