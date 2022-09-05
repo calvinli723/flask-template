@@ -7,7 +7,7 @@
       {% endif %}
     </head>
     <body>
-        <div>Cyli: 
+        <div>Flask Web App: 
             <a href="{{ url_for('index.base') }}">Home</a>
             {% if current_user.is_anonymous %}
                 <a href="{{ url_for('auth.login') }}">Login</a>
